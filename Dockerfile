@@ -52,8 +52,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Install numpy and other simple wheels first
-RUN pip install --no-cache-dir --break-system-packages --upgrade pip
-
 RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
     ipython \
     transforms3d==0.4.2 \
