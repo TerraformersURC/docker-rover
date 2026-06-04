@@ -1,0 +1,24 @@
+services:
+  terraformers:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        - userid=${userid:-1002}
+        - groupid=${groupid:-1002}
+    container_name: terraformers-container
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    image: terraformers-image:latest
+    # Required for communicating over the network
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    # Required for accessing hardware
+    privileged: true
+    tty: true
+    stdin_open: true
+    volumes:
+      - ${HOME}/terraformers-ws:/home/terry/terraformers-ws
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
