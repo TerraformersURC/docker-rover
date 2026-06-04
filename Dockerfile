@@ -81,13 +81,6 @@ USER terrence
 WORKDIR /home/terrence/terraformers-ws
 
 # 6. ROS Workspace & Bashrc Setup
-# RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc && \
-#     echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc && \
-#     echo "export GZ_VERSION=harmonic" >> ~/.bashrc
-
-
-#RUN chmod +x ./start_ros.bash
 
 RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc && \
-    echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc && \
-    echo "export GZ_VERSION=harmonic" >> ~/.bashrc
+    echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc

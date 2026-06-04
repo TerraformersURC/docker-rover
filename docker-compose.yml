@@ -4,9 +4,9 @@ services:
       context: ..
       dockerfile: docker-rover/Dockerfile
       args:
-        - userid=${userid:-1002}
-        - groupid=${groupid:-1002}
-    container_name: terraformers-container
+        - userid=${userid:-1000}
+        - groupid=${groupid:-1000}
+    container_name: rover-container
     environment:
       - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
