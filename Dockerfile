@@ -52,15 +52,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Install numpy and other simple wheels first
-RUN pip install --no-cache-dir --break-system-packages \
-    ipython transforms3d==0.4.2 numpy==1.26.4 \
-    opencv-contrib-python==4.9.0.80 opencv-python==4.9.0.80
+RUN pip install --no-cache-dir --break-system-packages --upgrade pip
 
-# 3. Handle problematic libraries
-# If python-fcl fails, we install it via a git source or an compatible version
-# RUN pip install --no-cache-dir --break-system-packages \
-#     git+https://github.com/BerkeleyAutomation/python-fcl.git@master \
-#     roboticstoolbox-python==1.1.1
+RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
+    ipython \
+    transforms3d==0.4.2 \
+    numpy==1.26.4 \
+    opencv-contrib-python==4.9.0.80
 
 # 5. User Management (Ensures Terrence can write to files)
 ARG userid=1000
