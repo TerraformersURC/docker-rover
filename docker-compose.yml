@@ -2,7 +2,7 @@ services:
   terraformers:
     build:
       context: ..
-      dockerfile: docker/Dockerfile
+      dockerfile: docker-rover/Dockerfile
       args:
         - userid=${userid:-1002}
         - groupid=${groupid:-1002}
