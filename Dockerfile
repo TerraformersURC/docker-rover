@@ -2,7 +2,7 @@
 ## Terraformers Docker Setup - JETSON  ##
 #########################################
 
-FROM arm64v8/ros:jazzy-ros-base
+FROM dustynv/ros:jazzy-desktop-r36.4.0-cu128-24.04
 ENV ROS_DISTRO=jazzy
 
 # 1. Essential Environment Setup
