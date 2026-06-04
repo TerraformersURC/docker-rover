@@ -66,8 +66,6 @@ ENV DEBIAN_FRONTEND=dialog
 RUN apt-get update && apt-get install -y \
     ros-jazzy-ros2-control \
     ros-jazzy-ros2-controllers \
-    ros-jazzy-ros-gz-bridge \
-    ros-jazzy-gz-ros2-control \
     ros-jazzy-foxglove-bridge \
     ros-jazzy-joint-state-publisher-gui \
     ros-jazzy-moveit \
@@ -88,17 +86,6 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-aruco-opencv* \
     ros-jazzy-usb-cam \
     ros-jazzy-rqt-image-view
-
-RUN apt-get update \
-    && apt-get install -y ros-jazzy-gz-*
-
-# Add OSRF Gazebo repository and key, then install Gazebo development library
-# needed for gz completions
-RUN apt-get update && apt-get install -y --no-install-recommends gnupg lsb-release ca-certificates curl && \
-    curl -fsSL https://packages.osrfoundation.org/gazebo.gpg -o /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" > /etc/apt/sources.list.d/gazebo-stable.list && \
-    apt-get update && apt-get install -y libgz-tools2-dev && \
-    rm -rf /var/lib/apt/lists/*
 
 # defaults
 ARG userid=1002
@@ -150,11 +137,8 @@ RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc && \
     echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc && \
     # segmentation fault workaround
     echo 'if [ -n "$DISPLAY" ]; then export QT_QPA_PLATFORM=xcb; fi' >> ~/.bashrc && \
-    # autocompletion for Gazebo CLI
-    echo "source /usr/share/bash-completion/completions/gz" >> ~/.bashrc && \
     # echo "export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc && \
     echo "export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST" >> ~/.bashrc && \
-    echo "export GZ_VERSION=harmonic" >> ~/.bashrc && \
     echo "alias clc=clear" >> ~/.bashrc && \
     # clear terminal when starting
     echo "clear" >> ~/.bashrc 
