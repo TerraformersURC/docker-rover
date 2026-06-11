@@ -10,7 +10,7 @@ services:
     environment:
       - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
-    image: terraformers-image:latest
+    image: rover-image:latest
     # Required for communicating over the network
     network_mode: "host"
     ipc: "host"
@@ -20,5 +20,5 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - ${HOME}/terraformers-ws:/home/terry/terraformers-ws
+      - ${HOME}/terraformers-ws:/home/terrence/terraformers-ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
