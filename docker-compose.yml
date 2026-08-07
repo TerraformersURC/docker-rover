@@ -22,3 +22,4 @@ services:
     volumes:
       - ${HOME}/terraformers-ws:/home/terrence/terraformers-ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /dev:/dev
